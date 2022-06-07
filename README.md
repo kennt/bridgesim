@@ -8,7 +8,7 @@
 
 * __Minimize the total time moving forward__
 	
-	When moving the light forward, use the two slowest people to cross the bridge. Because the speed is limited to the slower person, move with the next slowest person.  This is only used if we can use a faster person to move backwards.
+	When moving the light forward, use the two slowest people to cross the bridge. Because the speed is limited to the slower person, move with the next slowest person (thus saving us the cost of moving the next slowest person).  This is only used if we can use a faster person to move backwards.
 
 * __Minimize the time moving backward__
 
@@ -24,12 +24,12 @@ We will try two strategies:
 	
 Move everyone across a bridge before moving to the next bridge. So we start at the first bridge and then process each bridge in turn until we reach the end.
 
-Also, we can use the heuristics above.  If there is a faster person at the next node, then we (1) move the two slowest nodes to the next node and (2) use the faster node to return back.
+Also, we can use the heuristics above.  If there is a faster person at the next node, then we (1) move the two slowest nodes to the next node and (2) use the faster node to return back. If there are no faster persons, move the fastest and slowest person forwards, and return with the fastest person.  Continue until all of the people have been moved across the bridge.
 
 __Example__
 
 ```
-  (light)
+  (torch)
 A(speed:100)
 B(speed:10)   ---bridge1---  D(speed:200)  ---bridge2---
 C(speed:20)
@@ -38,7 +38,7 @@ C(speed:20)
 Since D(speed 200) is faster than A,B, and C, we move the two slowest nodes first.
 
 ```
-                               (light)
+                               (torch)
                              B(speed:10)
 A(speed:100)  ---bridge1---  C(speed:20)   --bridge2---
                              D(speed:200)
@@ -47,7 +47,7 @@ A(speed:100)  ---bridge1---  C(speed:20)   --bridge2---
 In order to have A cross the bridge, we then move D back across, since it is the fastest.
 
 ```
-  (light)
+  (torch)
 A(speed:100)  ---bridge1--- B(speed:10)  ---bridge2---
 D(speed:200)                C(speed:20)
 ```
@@ -55,11 +55,28 @@ D(speed:200)                C(speed:20)
 Finally, we can move A and D, thus completing the movement across bridge1.  We can now run the same process to cross bridge2
 
 ```
-                  (light)
+                  (torch)
   ---bridge1--- A(speed:100)  ---bridge2---
                 B(speed:10)
                 C(speed:20)
                 D(speed:200)
+```
+
+Since there is nothing after bridge2, we move the fastest and slowest people.
+
+```
+                                               (torch)
+  ---bridge1--- A(speed:100)  ---bridge2---  B(speed:10)
+                C(speed:20)                  D(speed:200)
+```
+
+Continue
+
+```
+                  (torch)
+  ---bridge1--- A(speed:100)  ---bridge2---  B(speed:10)
+                C(speed:20)
+		D(speed:200)
 ```
 
 ### __Global__ (not implemented)
