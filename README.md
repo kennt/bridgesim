@@ -5,10 +5,11 @@
 
 ## Some heuristics
 
+After reading the problem description, several heuristics came to mind.
 
 * __Minimize the total time moving forward__
 	
-	When moving the light forward, use the two slowest people to cross the bridge. Because the speed is limited to the slower person, move with the next slowest person (thus saving us the cost of moving the next slowest person).  This is only used if we can use a faster person to move backwards.
+	When moving the light forward, use the two slowest people to cross the bridge. Because the speed is limited to the slower person, move with the next slowest person (thus saving us the cost of moving the next slowest person).  This is only useful if we can use a faster person to move backwards.
 
 * __Minimize the time moving backward__
 
@@ -22,9 +23,9 @@ We will try two strategies:
 
 ### __Local__
 	
-Move everyone across a bridge before moving to the next bridge. So we start at the first bridge and then process each bridge in turn until we reach the end.
+Move everyone across the bridge before moving to the next bridge. So we start at the first bridge and then process each bridge in turn until we reach the end.
 
-Also, we can use the heuristics above.  If there is a faster person at the next node, then we (1) move the two slowest nodes to the next node and (2) use the faster node to return back. If there are no faster persons, move the fastest and slowest person forwards, and return with the fastest person.  Continue until all of the people have been moved across the bridge.
+Also, we can use the heuristics above.  If there is a faster person at the next node, then we (1) move the two slowest nodes to the next node and (2) use the faster node to return back. If there are no one mfaster, move the fastest and slowest person forwards, and return with the fastest person.  Continue until all of the people have been moved across the bridge.
 
 __Example__
 
@@ -81,7 +82,7 @@ Continue
 
 ### __Global__ (not implemented)
 
-This is very similar to the __Local__ strategy. The difference is that we attempt to grab the fastest person (wherever it may be).  So we would move the two slowest nodes forward until we reach the fastest node.  We then return with the fastest node backwards.
+This is very similar to the __Local__ strategy. The difference is that we attempt to grab the fastest person (wherever it may be).  So we would move the two slowest nodes forward until we reach the fastest node.  We then return with the fastest node backwards. The gains are larger the farther away the fastest person.
 
 After that we can use the __Local__ strategy. Or we could try to obtain the next fastest node in a similar fashion.
 
@@ -168,6 +169,19 @@ bridges:
         speed: 15
 
 ```
+
+__Results for this input__
+
+The total time taken by the simulation is returned (in minutes).  The time of last transfer across each bridge is also provided (also in minutes from the start of the simulation).
+```
+Results:
+  Total time: 291.5
+  Bridge[0] : 19
+  Bridge[1] : 169
+  Bridge[2] : 291.5
+
+```
+
 
 ### Assumptions/Limitations
 
