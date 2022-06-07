@@ -2,7 +2,9 @@
 
 ## Problem Description
 
-##Some heuristics
+
+## Some heuristics
+
 
 * __Minimize the total time moving forward__
 	
@@ -27,6 +29,7 @@ Also, we can use the heuristics above.  If there is a faster person at the next 
 __Example__
 
 ```
+  (light)
 A(speed:100)
 B(speed:10)   ---bridge1---  D(speed:200)  ---bridge2---
 C(speed:20)
@@ -35,6 +38,7 @@ C(speed:20)
 Since D(speed 200) is faster than A,B, and C, we move the two slowest nodes first.
 
 ```
+                               (light)
                              B(speed:10)
 A(speed:100)  ---bridge1---  C(speed:20)   --bridge2---
                              D(speed:200)
@@ -43,6 +47,7 @@ A(speed:100)  ---bridge1---  C(speed:20)   --bridge2---
 In order to have A cross the bridge, we then move D back across, since it is the fastest.
 
 ```
+  (light)
 A(speed:100)  ---bridge1--- B(speed:10)  ---bridge2---
 D(speed:200)                C(speed:20)
 ```
@@ -50,6 +55,7 @@ D(speed:200)                C(speed:20)
 Finally, we can move A and D, thus completing the movement across bridge1.  We can now run the same process to cross bridge2
 
 ```
+                  (light)
   ---bridge1--- A(speed:100)  ---bridge2---
                 B(speed:10)
                 C(speed:20)
@@ -62,9 +68,9 @@ This is very similar to the __Local__ strategy. The difference is that we attemp
 
 After that we can use the __Local__ strategy. Or we could try to obtain the next fastest node in a similar fashion.
 
-##Reference:##
+## Reference:
 
-###Building and running the code###
+### Building and running the code
 ```
 $ cd src
 $ make sim
@@ -83,7 +89,7 @@ Results:
   Bridge[2] : 291.5
 ```
 
-###Building and running the tests###
+### Building and running the tests
 ```
 $ cd src
 $ make test
@@ -108,7 +114,7 @@ All tests passed (115 assertions in 5 test cases)
 
 ```
 
-###Input Example###
+### Input Example
 
 ```
 
@@ -146,7 +152,7 @@ bridges:
 
 ```
 
-###Assumptions/Limitations###
+### Assumptions/Limitations
 
 * Elapsed time is recorded as a float
 * Integers are used indexes/identifiers, so this limits the number of people/bridges.
