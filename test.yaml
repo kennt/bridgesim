@@ -1,0 +1,34 @@
+
+bridges:
+  -
+    length: 100
+    people:
+      -
+        name: A
+        speed: 100
+      -
+        name: B
+        speed: 50
+      -
+        name: C
+        speed: 20
+      -
+        name: D
+        speed: 10
+  -
+    length: 250
+    people:
+      -
+        name: E
+        speed: 2.5
+  -
+    length: 150
+    people:
+      -
+        name: F
+        speed: 25
+      -
+        name: G
+        speed: 15
+
+
